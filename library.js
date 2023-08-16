@@ -26,6 +26,7 @@ function displayBooks() {
    <p>pages:${book.pages}</p>
    <p>status:${book.read ? 'Read':'Not Read'}</p>
    <button class='remove-book-btn' data-index='${index}'>remove book</button>
+   <button class ='toggle-read-btn' data-index='${index}'>toggle book</book>
    `
    
    bookAllDiv.appendChild(bookDiv);
@@ -58,6 +59,11 @@ document.addEventListener('click',(e)=>
   const index= e.target.getAttribute('data-index')
   myLibrary.splice(index,1);
   displayBooks();
+  }
+  if(e.target.classList.contains('toggle-read-btn')){
+    const index = e.target.getAttribute('data-index')
+    myLibrary[index].read=!myLibrary[index].read;
+    displayBooks();
   }
 }
 )
